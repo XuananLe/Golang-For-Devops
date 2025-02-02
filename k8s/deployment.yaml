@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-go-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-go-demo
+  template:
+    metadata:
+      labels:
+        app: k8s-go-demo
+    spec:
+      containers:
+      - name: k8s-go-demo
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
